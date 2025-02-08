@@ -11,7 +11,7 @@ import UIKit
 extension UIColor{
     static let contrastLightColor = UIColor(named: "contrastLightColor")
     static let contrastDarkColor = UIColor(named: "contrastDarkColor")
-    static let primaryColor = UIColor(named: "primaryColor")
+    static let mainlyfontColor = UIColor(named: "manlyFontColor")
     static let backgroundSoftColor = UIColor(named: "softGray")
     static let backgroundViewColor = UIColor(named: "background")
     

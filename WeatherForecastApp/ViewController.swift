@@ -11,7 +11,7 @@ class ViewController: UIViewController {
     
     private lazy var backgroundView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
-        imageView.image = UIImage(named: "background")
+        imageView.image = UIImage.mainBackground
         imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -31,7 +31,7 @@ class ViewController: UIViewController {
         label.font = UIFont.systemFont(ofSize: 20)
         label.text = "São Paulo"
         label.textAlignment = .center
-        label.textColor = UIColor.primaryColor
+        label.textColor = UIColor.mainlyfontColor
         return label
     }()
     
@@ -41,14 +41,14 @@ class ViewController: UIViewController {
         label.font = UIFont.systemFont(ofSize: 70, weight: .bold)
         label.text = "25°C"
         label.textAlignment = .left
-        label.textColor = UIColor.primaryColor
+        label.textColor = UIColor.mainlyfontColor
         return label
     }()
     
     private lazy var weatherIcon: UIImageView = {
         let imageView = UIImageView(frame: .zero)
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "sunIcon")
+        imageView.image = UIImage.sunIcon
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
