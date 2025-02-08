@@ -15,7 +15,7 @@ class HourlyForecastCollectionViewCell: UICollectionViewCell {
         let label = UILabel(frame: .zero)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "13:00"
-        label.textColor = UIColor(named: "contrastColor")
+        label.textColor = UIColor.contrastLightColor
         label.font = UIFont.systemFont(ofSize: 10, weight: .semibold)
         return label
     }()
@@ -24,9 +24,17 @@ class HourlyForecastCollectionViewCell: UICollectionViewCell {
         let label = UILabel(frame: .zero)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "25°C"
-        label.textColor = UIColor(named: "contrastColor")
+        label.textColor = UIColor.contrastLightColor
         label.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
         return label
+    }()
+    
+    private lazy var iconImageView: UIImageView = {
+        let imagemView = UIImageView(frame: .zero)
+        imagemView.translatesAutoresizingMaskIntoConstraints = false
+        imagemView.image = UIImage(named: "sunIcon")
+        imagemView.contentMode = .scaleAspectFit
+        return imagemView
     }()
     
     override init(frame: CGRect) {
