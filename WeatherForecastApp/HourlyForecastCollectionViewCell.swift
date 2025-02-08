@@ -57,14 +57,14 @@ class HourlyForecastCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        setView()
+        setupView()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setView(){
+    private func setupView(){
         setHierarchy()
         setContraints()
     }
@@ -75,11 +75,8 @@ class HourlyForecastCollectionViewCell: UICollectionViewCell {
     }
     
     private func setContraints(){
+        stackView.setContraintsToParent(contentView)
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             stackView.heightAnchor.constraint(equalToConstant: 33)
         ])
     }
