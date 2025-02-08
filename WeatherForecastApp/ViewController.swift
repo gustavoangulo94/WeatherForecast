@@ -159,13 +159,15 @@ class ViewController: UIViewController {
         return tableView
     }()
     
-    
+    private let service = Service()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
         setupView()
-        
+        service.fecthData(city: City(lat: "-23.6814346", lon: "-46.9249599", name: "São Paulo")){ message in
+            print(message)
+            
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -181,7 +183,6 @@ class ViewController: UIViewController {
     }
     
     private func setupView(){
-
         setHierarchy()
         setConstraints()
     }
@@ -194,7 +195,6 @@ class ViewController: UIViewController {
         view.addSubview(hourlyCollectionView)
         view.addSubview(dailyForecastLabel)
         view.addSubview(dailyyForecastTableView)
-        
         
         headerView.addSubview(cityLabel)
         headerView.addSubview(temperatureLabel)
@@ -261,7 +261,6 @@ extension ViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HourlyForecastCollectionViewCell.indentifier, for: indexPath)
-        
         return cell
     }
 }
@@ -273,7 +272,6 @@ extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: DailyForecastTableViewCell.indentifier, for: indexPath)
-        
         return cell
     }
 }
