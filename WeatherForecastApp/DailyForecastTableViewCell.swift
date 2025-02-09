@@ -24,7 +24,6 @@ class DailyForecastTableViewCell: UITableViewCell {
     
     private lazy var weekDayLabel: UILabel = {
         let label = UILabel(frame: .zero)
-        label.text = "TER"
         label.textColor = UIColor.contrastLightColor
         label.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
         return label
@@ -34,13 +33,11 @@ class DailyForecastTableViewCell: UITableViewCell {
         let imageView = UIImageView(frame: .zero)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage.iconTemperature
         return imageView
     }()
     
     private lazy var minTemperatureLabel: UILabel = {
         let label = UILabel(frame: .zero)
-        label.text = "min 25C"
         label.textColor = UIColor.contrastLightColor
         label.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
         return label
@@ -48,7 +45,6 @@ class DailyForecastTableViewCell: UITableViewCell {
     
     private lazy var maxTemperatureLabel: UILabel = {
         let label = UILabel(frame: .zero)
-        label.text = "max 25C"
         label.textColor = UIColor.contrastLightColor
         label.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
         return label
@@ -61,6 +57,13 @@ class DailyForecastTableViewCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func loadData(weekDay: String?, icon: UIImage?, min: String?, max: String?){
+        weekDayLabel.text = weekDay
+        iconImageView.image = icon
+        minTemperatureLabel.text = "min \(min ?? "")"
+        maxTemperatureLabel.text = "max \(max ?? "")"
     }
     
     private func setupView(){
@@ -77,7 +80,7 @@ class DailyForecastTableViewCell: UITableViewCell {
     private func setContraints(){
         stackView.setContraintsToParent(contentView)
         NSLayoutConstraint.activate([
-            weekDayLabel.widthAnchor.constraint(lessThanOrEqualToConstant: 50)
+            weekDayLabel.widthAnchor.constraint(lessThanOrEqualToConstant: 50),
         ])
     }
 }
