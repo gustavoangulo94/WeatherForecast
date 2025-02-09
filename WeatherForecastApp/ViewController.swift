@@ -306,7 +306,6 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         }
         
         let forecast = forecastResponse?.daily[indexPath.row]
-        
         cell.loadData(weekDay: forecast?.dt.toWeekdayName(),
                       icon: UIImage(named: forecast?.weather.first?.icon ?? ""),
                       min: forecast?.temp.min.toCelsius() ?? "",
