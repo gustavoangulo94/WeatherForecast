@@ -191,7 +191,7 @@ class ViewController: UIViewController {
         temperatureLabel.text = forecastResponse?.current.temp.toCelsius()
         humidityValueLabel.text = "\(Int(forecastResponse?.current.humidity ?? 0)) mm"
         windValueLabel.text = "\(Int(forecastResponse?.current.windSpeed ?? 0)) km/h"
-        weatherIcon.image = UIImage(named: forecastResponse?.current.weather[0].icon ?? "")
+        weatherIcon.image = UIImage(named: forecastResponse?.current.weather.icon ?? "")
         
         if forecastResponse?.current.dt.isDayTime() ?? true {
             backgroundView.image = UIImage.dayBackground
@@ -288,7 +288,7 @@ extension ViewController: UICollectionViewDataSource {
         
         let forecast = forecastResponse?.hourly[indexPath.row]
         cell.loadData(time: forecast?.dt.toHourFormat(),
-                      icon: UIImage(named: forecast?.weather.first?.icon ?? ""),
+                      icon: UIImage(named: forecast?.weather.icon ?? ""),
                       temp: forecast?.temp.toCelsius())
         return cell
     }
@@ -310,6 +310,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
                       icon: UIImage(named: forecast?.weather.first?.icon ?? ""),
                       min: forecast?.temp.min.toCelsius() ?? "",
                       max: forecast?.temp.max.toCelsius() ?? "")
+        print("\(indexPath.row): \(forecast?.weather.first?.icon ?? "")")
         return cell
     }
     

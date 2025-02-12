@@ -53,12 +53,15 @@ struct Forecast: Codable {
     let temp: Double
     let humidity: Int
     let windSpeed: Double
-    let weather: [Weather]
+   private let weatherOrigin: [Weather]
+    var weather: Weather {
+        return weatherOrigin.first ?? Weather(id: 0, main: "", description: "", icon: "")
+    }
 
     enum CodingKeys: String, CodingKey {
         case dt, temp, humidity
         case windSpeed = "wind_speed"
-        case weather
+        case weatherOrigin = "weather"
     }
 }
 
