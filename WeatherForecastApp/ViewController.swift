@@ -45,7 +45,6 @@ class ViewController: UIViewController {
     private lazy var weatherIcon: UIImageView = {
         let imageView = UIImageView(frame: .zero)
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage.sunIcon
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
@@ -101,7 +100,7 @@ class ViewController: UIViewController {
     private lazy var statsStackView: UIStackView = {
        let stackView = UIStackView(arrangedSubviews: [humidityStackView, windStackView])
         stackView.axis = .vertical
-        stackView.spacing = 8
+        stackView.spacing = 3
         stackView.backgroundColor = UIColor.backgroundSoftColor
         stackView.layer.cornerRadius = 10
         stackView.isLayoutMarginsRelativeArrangement = true
@@ -310,7 +309,6 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
                       icon: UIImage(named: forecast?.weather.first?.icon ?? ""),
                       min: forecast?.temp.min.toCelsius() ?? "",
                       max: forecast?.temp.max.toCelsius() ?? "")
-        print("\(indexPath.row): \(forecast?.weather.first?.icon ?? "")")
         return cell
     }
     

@@ -80,7 +80,7 @@ class DailyForecastTableViewCell: UITableViewCell {
     private func setContraints(){
         stackView.setContraintsToParent(contentView)
         NSLayoutConstraint.activate([
-            weekDayLabel.widthAnchor.constraint(lessThanOrEqualToConstant: 50),
+            weekDayLabel.widthAnchor.constraint(lessThanOrEqualToConstant: 50)
         ])
     }
 }
