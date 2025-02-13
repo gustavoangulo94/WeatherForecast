@@ -36,6 +36,7 @@ class Service {
                 completion(nil)
             }
         }
+        
         task.resume()
     }
 }
