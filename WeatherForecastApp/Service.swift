@@ -41,14 +41,14 @@ class Service {
 }
 
 // MARK: - ForecastResponse
-struct ForecastResponse: Codable {
+struct ForecastResponse: Decodable {
     let current: Forecast
     let hourly: [Forecast]
     let daily: [DailyForecast]
 }
 
 // MARK: - Current
-struct Forecast: Codable {
+struct Forecast: Decodable {
     let dt: Int
     let temp: Double
     let humidity: Int
@@ -66,19 +66,34 @@ struct Forecast: Codable {
 }
 
 // MARK: - Weather
-struct Weather: Codable {
+struct Weather: Decodable {
     let id: Int
     let main, description, icon: String
 }
 
 // MARK: - Daily
-struct DailyForecast: Codable {
+struct DailyForecast: Decodable {
     let dt: Int
     let temp: Temp
-    let weather: [Weather]
+    let weather: Weather?
+       
+    
+    enum CodingKeys: CodingKey {
+        case dt
+        case temp
+        case weather
+    }
+    
+    init(from decoder: any Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.dt = try container.decode(Int.self, forKey: .dt)
+        self.temp = try container.decode(Temp.self, forKey: .temp)
+        self.weather = try container.decode([Weather].self, forKey: .weather).first
+    }
+    
 }
 // MARK: - Temp
-struct Temp: Codable {
+struct Temp: Decodable {
     let day, min, max, night: Double
     let eve, morn: Double
 }
